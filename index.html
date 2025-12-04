@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <title>Relatie & Systeem Communicatie Coach - Demo</title>
+  <title>Communicatie-oefenmodule voor cliënten - Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -316,7 +316,6 @@
       margin: 6px 0;
     }
 
-    /* Tablet */
     @media (max-width: 900px) {
       main {
         grid-template-columns: minmax(0, 1fr);
@@ -324,7 +323,6 @@
       }
     }
 
-    /* Mobiel klein */
     @media (max-width: 600px) {
       header {
         padding: 12px 14px;
@@ -400,8 +398,8 @@
 </head>
 <body>
 <header>
-  <h1>Communicatie Coach voor Relatie- & Systeemtherapie</h1>
-  <p>Demo met Jan, Truus en de therapeut. Analyseer berichten, bouw een logboek en oefen gezondere communicatie.</p>
+  <h1>Communicatie-oefenmodule voor cliënten</h1>
+  <p>Onderdeel van e-learning: oefen met lastige berichten en bespreek jouw uitkomsten met je hulpverlener.</p>
 </header>
 
 <main>
@@ -410,11 +408,12 @@
     <div class="card-inner">
       <div>
         <h2>
-          Analyse & Coach
-          <span class="badge">Demo workflow</span>
+          Stap 1 & 2 – Analyse & oefenreactie
+          <span class="badge">Cliënt-oefening</span>
         </h2>
         <p class="meta">
-          Kies rol en kanaal. De velden vullen zich met demo-berichten (Jan &amp; Truus / groepsapp met therapeut).
+          Kies hoe jij in dit gesprek staat, eventueel een kanaal, en vul een (voorbeeld)bericht in van de ander.
+          Daarna schrijf je jouw conceptreactie en laat je de coach meekijken.
         </p>
       </div>
 
@@ -422,16 +421,16 @@
         <div>
           <label for="roleSelect">Ik schrijf als</label>
           <select id="roleSelect">
-            <option value="gezonde-ouder">Gezonde ouder (Jan)</option>
-            <option value="andere-ouder">Andere ouder (Truus)</option>
-            <option value="neutraal">Neutrale deelnemer / therapeut</option>
+            <option value="gezonde-ouder">Ik als ouder / cliënt</option>
+            <option value="andere-ouder">De ander is (ex-)partner / ouder</option>
+            <option value="neutraal">Situatie met hulpverlener erbij (groepsapp)</option>
           </select>
         </div>
         <div>
-          <label for="channelSelect">Kanaal (fictieve koppeling)</label>
+          <label for="channelSelect">Kanaal (voorbeeld)</label>
           <select id="channelSelect">
             <option value="whatsapp">WhatsApp</option>
-            <option value="signal">Signal (groepsapp met therapeut)</option>
+            <option value="signal">Signal (groepsapp met hulpverlener)</option>
             <option value="telegram">Telegram</option>
             <option value="anders">E-mail / anders</option>
           </select>
@@ -441,21 +440,21 @@
       <div class="section-divider"></div>
 
       <div>
-        <label for="incomingMessage">Laatste bericht van de ander</label>
-        <textarea id="incomingMessage" placeholder="Plak hier het bericht waar je op wilt reageren..."></textarea>
+        <label for="incomingMessage">Laatste bericht van de ander (of oefenbericht)</label>
+        <textarea id="incomingMessage" placeholder="Plak hier een bericht, of gebruik de ingevulde oefentekst..."></textarea>
       </div>
 
       <div>
         <label for="draftMessage">Mijn conceptreactie</label>
-        <textarea id="draftMessage" placeholder="Typ hier wat je eigenlijk wilt sturen..."></textarea>
+        <textarea id="draftMessage" placeholder="Typ hier wat je eigenlijk zou willen sturen..."></textarea>
       </div>
 
       <div class="row" style="align-items:center; margin-top:4px;">
         <button class="btn" id="analyzeBtn">
-          <span>Analyseer & geef suggesties</span>
+          <span>Analyseer & geef oefensuggesties</span>
         </button>
         <button class="btn secondary" id="saveLogBtn">
-          Logboek: sla huidige interactie op
+          Sla deze oefening op in mijn logboek
         </button>
       </div>
 
@@ -463,7 +462,7 @@
 
       <div class="suggestions" id="analysisOutput">
         <div class="notice">
-          Vul (of gebruik de demo-tekst) en klik op “Analyseer &amp; geef suggesties” om feedback en coach-zinnen te zien.
+          Vul (of gebruik de demo-tekst) en klik op “Analyseer & geef oefensuggesties” om feedback en coach-zinnen te zien.
         </div>
       </div>
     </div>
@@ -474,19 +473,19 @@
     <div class="card-inner">
       <div>
         <h2>
-          Logboek & Patronen
-          <span class="badge">Leeg bij start</span>
+          Stap 3 – Mijn oefenlogboek
+          <span class="badge">Alleen op dit apparaat</span>
         </h2>
         <p class="meta">
-          Hier zie je alleen het laatste bericht van de ander en de gekozen coach-formulering (met blauwe accentbalk).
-          Het logboek blijft lokaal in deze browser (localStorage).
+          Hier zie je jouw opgeslagen oefeningen: het laatste bericht van de ander en de gekozen coach-formulering
+          (met blauwe balk). Dit blijft alleen op dit apparaat bewaard. Bespreek het eventueel in je volgende gesprek.
         </p>
       </div>
 
       <div class="row" style="align-items:center;">
         <div class="row">
-          <button class="btn small secondary" id="exportBtn">Exporteer logboek (JSON)</button>
-          <button class="btn small danger" id="clearLogBtn">Wis logboek in deze browser</button>
+          <button class="btn small secondary" id="exportBtn">Download mijn oefenlogboek (tekst)</button>
+          <button class="btn small danger" id="clearLogBtn">Wis oefenlogboek op dit apparaat</button>
         </div>
       </div>
 
@@ -494,7 +493,7 @@
 
       <div class="log-list" id="logList"></div>
       <div id="logEmptyNotice" class="notice">
-        Nog geen items in het logboek. Na een analyse kun je met “Logboek: sla huidige interactie op”
+        Nog geen oefeningen opgeslagen. Na een analyse kun je met “Sla deze oefening op in mijn logboek”
         één interactie vastleggen (laatste bericht + gekozen coach-formulering).
       </div>
     </div>
@@ -523,8 +522,6 @@
     "jij luistert nooit",
     "schuldig",
     "egoïst",
-    "narcist",
-    "idioen",
     "idioot",
     "gek",
     "ziek in je hoofd"
@@ -532,13 +529,12 @@
   const escalationWords = [
     "klaar met jou",
     "ik ben er klaar mee",
-    "ik ben klaar met dit",
     "je krijgt niks meer",
     "ik ga naar de advocaat",
     "ik ben je zat"
   ];
 
-  const STORAGE_KEY = "relatie_communicatie_logboek_v1";
+  const STORAGE_KEY = "relatie_communicatie_logboek_client_v1";
   let logItems = [];
   let lastSelectedSuggestion = "";
 
@@ -591,7 +587,7 @@
       title: "Meer in ik-taal en concreet gedrag",
       text:
         "Wanneer [concreet gedrag van de ander], dan voel ik mij [gevoel] en ik heb nodig dat [concrete behoefte]. " +
-        "Zou je [specifiek verzoek] willen doen, zodat we dit voor de kinderen rustiger houden?"
+        "Zou je [specifiek verzoek] willen doen, zodat er voor de kinderen en mij meer rust ontstaat?"
     });
 
     suggestions.push({
@@ -603,18 +599,19 @@
 
     if (opts.focusHealthy) {
       suggestions.push({
-        title: "Gezonde ouder: begrenzen zonder escaleren",
+        title: "Begrenzen zonder escaleren",
         text:
-          "Ik begrijp dat jij dit anders ziet. Voor mij is het belangrijk dat we afspraken maken die voorspelbaar zijn voor de kinderen. " +
-          "Dit is voor mij de grens: [beschrijf kort en concreet]. Ik blijf hierover rustig, maar ik wijk daar niet van af."
+          "Ik begrijp dat jij dit anders ziet. Voor mij is het belangrijk dat we afspraken maken die voorspelbaar zijn, " +
+          "voor mij en voor de kinderen. Dit is voor mij de grens: [beschrijf kort en concreet]. Ik wil rustig blijven, " +
+          "maar ik wijk hier niet zomaar van af."
       });
     }
 
     if (opts.focusNarc) {
       suggestions.push({
-        title: "Perspectiefwisseling: erkenning + grens",
+        title: "Erkenning geven én bij jezelf blijven",
         text:
-          "Ik zie dat het voor jou ook een lastig onderwerp is en dat je je mogelijk niet gehoord voelt. " +
+          "Ik zie dat dit onderwerp voor jou ook spanning geeft en dat je je mogelijk niet gehoord voelt. " +
           "Tegelijk heb ik mijn eigen grenzen en behoeften. Ik wil jouw kant horen, maar niet ten koste van respect naar mij toe."
       });
     }
@@ -622,10 +619,11 @@
     const lower = draft.toLowerCase();
     if (lower.includes("advocaat") || lower.includes("rechter")) {
       suggestions.push({
-        title: "Juridische toon verzachten (als het kan)",
+        title: "Juridische toon verzachten (als dat kan)",
         text:
-          "Ik wil liever voorkomen dat we meteen alles juridisch maken. " +
-          "Zullen we eerst proberen om met hulp van onze therapeut / begeleider dit gesprek te voeren, zodat we beide beter gehoord worden?"
+          "Ik wil liever voorkomen dat alles meteen juridisch wordt. " +
+          "Zullen we eerst proberen dit met hulp van onze hulpverlener te bespreken, " +
+          "zodat we allebei beter gehoord worden?"
       });
     }
 
@@ -634,7 +632,7 @@
         title: "Startzin als je vastloopt",
         text:
           "Ik vind het lastig om dit rustig te verwoorden, dus ik probeer het stap voor stap: " +
-          "voor mij is er iets belangrijk waar ik met je over wil afstemmen, omdat het invloed heeft op de kinderen."
+          "voor mij is er iets belangrijks waar ik met je over wil afstemmen, omdat het invloed heeft op mij en/of de kinderen."
       });
     }
 
@@ -645,10 +643,10 @@
     const role = roleSelect.value;
     const roleLabel =
       role === "gezonde-ouder"
-        ? "Gezonde ouder (Jan)"
+        ? "Ik als ouder / cliënt"
         : role === "andere-ouder"
-        ? "Andere ouder (Truus)"
-        : "Therapeut / neutraal";
+        ? "De ander (bijv. ex-partner / ouder)"
+        : "Situatie met hulpverlener erbij";
 
     const flags = classifyDraft(draft || "");
     const focus = getCoachFocus(role);
@@ -659,9 +657,9 @@
     const summaryBlock = document.createElement("div");
     summaryBlock.className = "suggestion-block";
     summaryBlock.innerHTML =
-      "<strong>Samenvatting analyse</strong>" +
+      "<strong>Samenvatting van deze oefening</strong>" +
       `<div class="chips">
-        <span class="chip">Rol: ${escapeHtml(roleLabel)}</span>
+        <span class="chip">Perspectief: ${escapeHtml(roleLabel)}</span>
         <span class="chip">Kanaal: ${escapeHtml(
           channelSelect.options[channelSelect.selectedIndex].text
         )}</span>
@@ -680,7 +678,7 @@
     } else {
       const c = document.createElement("span");
       c.className = "chip";
-      c.textContent = "Geen sterke escalatie-signalen gevonden.";
+      c.textContent = "Geen duidelijke escalatiesignalen gevonden.";
       chips.appendChild(c);
     }
     summaryBlock.appendChild(chips);
@@ -711,8 +709,7 @@
     const footerNotice = document.createElement("div");
     footerNotice.className = "notice";
     footerNotice.textContent =
-      "Deze tool doet géén diagnose en vervangt geen therapeut. Gebruik het als ondersteuning; " +
-      "belangrijke keuzes altijd met een professional afstemmen.";
+      "Deze oefentool vervangt geen behandeling of diagnose. Gebruik dit als ondersteuning en bespreek belangrijke punten met je hulpverlener.";
     analysisOutput.appendChild(footerNotice);
   }
 
@@ -721,7 +718,7 @@
     const note = document.createElement("div");
     note.className = "notice";
     note.textContent =
-      "Vul (of gebruik de demo-tekst) en klik op “Analyseer & geef suggesties” om feedback en coach-zinnen te zien.";
+      "Vul (of gebruik de demo-tekst) en klik op “Analyseer & geef oefensuggesties” om feedback en coach-zinnen te zien.";
     analysisOutput.appendChild(note);
   }
 
@@ -780,7 +777,7 @@
       const bodyIncoming = document.createElement("div");
       bodyIncoming.className = "log-body";
       bodyIncoming.textContent = item.incoming
-        ? "Laatste bericht van de ander: " + item.incoming
+        ? "Laatste bericht van de ander / oefenbericht: " + item.incoming
         : "Laatste bericht van de ander: (niet ingevuld)";
 
       const bodySuggestion = document.createElement("div");
@@ -793,7 +790,7 @@
       bodySuggestion.textContent =
         item.selectedSuggestion && item.selectedSuggestion.trim()
           ? item.selectedSuggestion
-          : "Geen coach-formulering geselecteerd in deze interactie.";
+          : "Geen coach-formulering geselecteerd in deze oefening.";
 
       div.appendChild(header);
       div.appendChild(bodyIncoming);
@@ -804,8 +801,16 @@
   }
 
   function loadLog() {
-    logItems = [];
-    saveLogToStorage();
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        logItems = JSON.parse(stored);
+      } else {
+        logItems = [];
+      }
+    } catch {
+      logItems = [];
+    }
     renderLog();
   }
 
@@ -813,10 +818,10 @@
     if (role === "gezonde-ouder" && channel === "whatsapp") {
       return {
         incoming:
-          "Truus via WhatsApp: \"Je bent echt een waardeloze vader. Je doet NOOIT wat we afspreken en je denkt alleen maar aan jezelf.\"",
+          "Voorbeeld (WhatsApp): \"Je bent echt een waardeloze ouder. Je doet NOOIT wat we afspreken en je denkt alleen maar aan jezelf.\"",
         draft:
-          "Jan: \"Ik ben boos en geraakt door wat je zegt. Wanneer jij zegt dat ik nooit iets goed doe, " +
-          "voel ik me machteloos en aangevallen. Ik wil dat we afspraken maken die voorspelbaar zijn voor de kinderen, " +
+          "Ik: \"Ik ben geraakt door wat je zegt. Wanneer jij zegt dat ik nooit iets goed doe, " +
+          "voel ik me machteloos en aangevallen. Ik wil dat we afspraken maken die voorspelbaar zijn, " +
           "zonder elkaar te verwijten dat alles altijd fout gaat.\""
       };
     }
@@ -824,10 +829,10 @@
     if (role === "gezonde-ouder" && channel === "anders") {
       return {
         incoming:
-          "Truus per e-mail: \"Je hebt wéér het schema aangepast zonder overleg. De kinderen worden hier alleen maar onrustig van door jou.\"",
+          "Voorbeeld (e-mail): \"Je hebt wéér het schema aangepast zonder overleg. De kinderen worden hier alleen maar onrustig van door jou.\"",
         draft:
-          "Jan: \"In je mail lees ik dat je je veel zorgen maakt over de onrust bij de kinderen. " +
-          "Dat herken ik, en daarom wil ik graag vaste afspraken. Zullen we samen één schema afspreken " +
+          "Ik: \"In je mail lees ik dat je je zorgen maakt over onrust bij de kinderen. " +
+          "Dat herken ik, en daarom wil ik graag vaste afspraken. Zullen we samen een schema afspreken " +
           "dat we minimaal drie maanden aanhouden, zodat er meer voorspelbaarheid ontstaat?\""
       };
     }
@@ -835,41 +840,40 @@
     if (role === "andere-ouder" && channel === "whatsapp") {
       return {
         incoming:
-          "Jan via WhatsApp: \"Als jij weer op het laatste moment alles omgooit, raken de kinderen overstuur. Dit werkt zo niet.\"",
+          "Voorbeeld (WhatsApp): \"Als jij weer op het laatste moment alles omgooit, raken de kinderen overstuur. Dit werkt zo niet.\"",
         draft:
-          "Truus: \"Jij doet net alsof jij alles perfect doet. Jij bent degene die ALTIJD moeilijk doet over elk detail.\""
+          "Ik: \"Jij doet net alsof jij alles perfect doet. Jij bent degene die ALTIJD moeilijk doet over elk detail.\""
       };
     }
 
     if (role === "neutraal" && channel === "signal") {
       return {
         incoming:
-          "Truus in groepsapp: \"Ik ben je gedrag zat, jij verandert toch nooit.\"  \n" +
-          "Jan in groepsapp: \"Dit is precies wat ik bedoel, alles ligt altijd aan mij.\"",
+          "Groepsapp-voorbeeld: \"Ik ben je gedrag zat, jij verandert toch nooit.\"  \n" +
+          "\"Dit is precies wat ik bedoel, alles ligt altijd aan mij.\"",
         draft:
-          "Therapeut: \"Ik hoor bij jullie allebei veel frustratie. Ik stel voor dat we nu even pauzeren met verwijten. " +
-          "Willen jullie ieder één voorbeeld delen van een moment waarop het wél beter ging tussen jullie, " +
-          "zodat we vanuit die situaties kunnen onderzoeken wat werkte?\""
+          "Ik (bijv. met hulpverlener erbij): \"Ik hoor bij ons allebei veel frustratie. Ik stel voor dat we nu even pauzeren met verwijten. " +
+          "Misschien kunnen we ieder één voorbeeld noemen van een moment waarop het wél beter ging, " +
+          "zodat we kunnen onderzoeken wat daar werkte.\""
       };
     }
 
     if (role === "neutraal" && channel === "anders") {
       return {
         incoming:
-          "Jan per e-mail (cc Truus): \"Ik ben bang dat onze afspraken elke week veranderen. Dit voelt onveilig voor mij en de kinderen.\"",
+          "Voorbeeld (e-mail cc hulpverlener): \"Ik ben bang dat onze afspraken elke week veranderen. Dit voelt onveilig.\"",
         draft:
-          "Therapeut: \"Dank voor je mail, Jan. Ik hoor dat voorspelbaarheid voor jou en de kinderen belangrijk is. " +
-          "In onze volgende sessie wil ik graag met jullie allebei drie concrete afspraken maken die minimaal een paar maanden gelden, " +
-          "zodat er meer rust ontstaat.\""
+          "Ik: \"Ik hoor dat voorspelbaarheid belangrijk is. In een volgend gesprek wil ik graag een paar concrete afspraken maken " +
+          "die we minimaal een paar maanden laten staan, zodat er meer rust kan ontstaan.\""
       };
     }
 
     return {
       incoming:
-        "Truus: \"Je ziet de kinderen te weinig en dat is jouw schuld. Jij verpest ALLES voor ze.\"",
+        "Voorbeeldbericht: \"Je ziet de kinderen te weinig en dat is jouw schuld. Jij verpest ALLES voor ze.\"",
       draft:
-        "Jan: \"Wanneer afspraken last-minute veranderen, raak ik gestrest en maak ik me zorgen of het voor de kinderen wel voorspelbaar blijft. " +
-        "Ik heb nodig dat we de afspraken van tevoren vastleggen en ons daaraan houden, zodat er voor hen meer rust is.\""
+        "Ik: \"Wanneer afspraken last-minute veranderen, raak ik gestrest en maak ik me zorgen of het voor de kinderen wel voorspelbaar blijft. " +
+        "Ik heb nodig dat we afspraken van tevoren vastleggen en ons daaraan houden, zodat er meer rust kan zijn.\""
     };
   }
 
@@ -891,17 +895,15 @@
 
   saveLogBtn.addEventListener("click", () => {
     const incoming = incomingMessage.value || "";
-    const draft = draftMessage.value || "";
-
     const selectedSuggestion = lastSelectedSuggestion || "";
 
     const role = roleSelect.value;
     const roleLabel =
       role === "gezonde-ouder"
-        ? "Gezonde ouder (Jan)"
+        ? "Ik als ouder / cliënt"
         : role === "andere-ouder"
-        ? "Andere ouder (Truus)"
-        : "Therapeut / neutraal";
+        ? "De ander als (ex-)partner / ouder"
+        : "Situatie met hulpverlener erbij";
 
     const channelLabel = channelSelect.options[channelSelect.selectedIndex].text;
 
@@ -919,13 +921,22 @@
   });
 
   exportBtn.addEventListener("click", () => {
-    const blob = new Blob([JSON.stringify(logItems, null, 2)], {
-      type: "application/json"
+    let content = "Oefenlogboek communicatiemodule\n\n";
+    logItems.forEach((item, index) => {
+      content += `Oefening ${index + 1}\n`;
+      content += `Datum/tijd: ${new Date(item.createdAt).toLocaleString()}\n`;
+      content += `Perspectief: ${item.roleLabel}\n`;
+      content += `Kanaal: ${item.channelLabel}\n`;
+      content += `Laatste bericht van de ander / oefenbericht:\n${item.incoming}\n\n`;
+      content += `Gekozen coach-formulering:\n${item.selectedSuggestion || "(geen gekozen)"}\n`;
+      content += "-----------------------------\n\n";
     });
+
+    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "communicatie-logboek-demo-jan-truus.json";
+    a.download = "oefenlogboek_communicatie.txt";
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -933,7 +944,7 @@
   });
 
   clearLogBtn.addEventListener("click", () => {
-    if (!confirm("Weet je zeker dat je het volledige logboek in deze browser wilt wissen?")) {
+    if (!confirm("Weet je zeker dat je het volledige oefenlogboek op dit apparaat wilt wissen?")) {
       return;
     }
     logItems = [];
